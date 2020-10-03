@@ -4,28 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import sys
 
-#Function for outlier removal
-def outlier_removal(input_file):
-    dataset=pd.read_csv(input_file)
-    data=dataset.iloc[:,1:]
-    
-    for n,row in data.iterrows():
-        #Defining threshold value
-        threshold_value=2.5
-        mean=np.mean(row)
-        standard_deviation=np.std(row)
-        
-        for value in row:
-            #Calculating z score
-            z_score=(value-mean)/standard_deviation
-            
-            #Removing rows whose z_score> threshold value
-            if np.abs(z_score)>threshold_value:
-                dataset = dataset.drop(data.index[n])
-    
-          
-    rows_removed=len(data) -len(dataset)
-    return rows_removed
+
 
 
 def main():
